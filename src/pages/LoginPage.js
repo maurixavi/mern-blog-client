@@ -6,7 +6,7 @@ export default function LoginPage() {
 
 	async function login(e){
 		e.preventDefault();
-		await fetch('http://localhost:4000/login', {
+		await fetch('https://mern-blog-api-eight.vercel.app/login', {
 			method: 'POST',
 			body: JSON.stringify({username, password}),
 			headers: {'Content-Type':'application/json'},
