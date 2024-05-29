@@ -8,6 +8,7 @@ export default function RegisterPage() {
 		e.preventDefault();
 		const response = await fetch('https://mern-blog-api-eight.vercel.app/register', {
 			method: 'POST',
+			mode: "cors",
 			body: JSON.stringify({username, password}),
 			headers: {'Content-Type':'application/json'},
 		})
