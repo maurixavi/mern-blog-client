@@ -1,17 +1,30 @@
 import { useState } from "react"
+import { Navigate } from "react-router-dom"
 
 export default function LoginPage() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const [redirect, setRedirect] = useState(false)
 
 	async function login(e){
 		e.preventDefault();
-		await fetch('https://mern-blog-api-eight.vercel.app/login', {
+		const response = await fetch('https://mern-blog-api-eight.vercel.app/login', {
 			method: 'POST',
 			body: JSON.stringify({username, password}),
 			headers: {'Content-Type':'application/json'},
 		})
 		
+		if (response.ok){
+			alert('login successful')
+			setRedirect(true)
+		} else {
+			alert('login failed')
+		}
+
+	}
+
+	if (redirect) {
+		return <Navigate to={'/'} />
 	}
 
 	return (
