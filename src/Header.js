@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 export default function Header() {
 	const [username, setUsername] = useState(null)
 	useEffect(() => {
-		fetch('http://localhost:4000/profile', {
+		fetch('https://mern-blog-api-eight.vercel.app/profile', {
 			credentials: 'include',
 		}).then(response => {
 			response.json().then(userInfo => {
