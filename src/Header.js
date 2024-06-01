@@ -1,36 +1,35 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
-import { UserContext } from './UserContext';
-import axios from 'axios';
+import { UserContext } from './UserContext'
 
 export default function Header() {
-  const { setUserInfo, userInfo } = useContext(UserContext);
-
+  const {setUserInfo, userInfo} = useContext(UserContext)
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios.get('https://mern-blog-api-eight.vercel.app/profile', {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then(response => {
-        setUserInfo(response.data);
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching user profile:', error);
-      });
-    }
-  }, [setUserInfo]);
+    fetch('https://mern-blog-api-eight.vercel.app/profile', {
+      credentials: 'include',
+      mode: "cors",
+    }).then(response => {
+			response.json().then(userInfo => {
+				setUserInfo(userInfo);
+				console.log(userInfo)
+			})
+		})
+  }, []);
 
   function logout() {
-    localStorage.removeItem('token'); // Eliminar el token de localStorage
-    setUserInfo(null);
+    fetch('https://mern-blog-api-eight.vercel.app/logout', {
+      method: 'POST',
+      mode: "cors",
+      credentials: 'include',
+    }).then(() => {
+      setUserInfo(null);
+    });
   }
 
-  const username = userInfo?.username;
+	const username = userInfo?.username
 
   return (
-    <header>
+    <header>   
       <Link to="/" className="logo">My Blog</Link>
       <nav>
         {username ? (
