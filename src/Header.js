@@ -17,7 +17,7 @@ export default function Header() {
   }, []);
 
   function logout() {
-    fetch('https://mern-blog-api-eight.vercel.app/logout', {
+    fetch('https://mern-blog-api-eight.vercel.app//logout', {
       method: 'POST',
       mode: "cors",
       credentials: 'include',
