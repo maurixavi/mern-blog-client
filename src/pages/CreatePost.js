@@ -35,7 +35,7 @@ export default function CreatePost() {
 		data.set('file', files[0])
 
 		e.preventDefault();
-		const response = await fetch('https://mern-blog-api-eight.vercel.app//post', {
+		const response = await fetch('https://mern-blog-api-eight.vercel.app/post', {
 			method: 'POST',
 			mode: 'cors',
 			body: data,

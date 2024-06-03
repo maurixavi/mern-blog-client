@@ -10,6 +10,7 @@ export default function RegisterPage() {
 			method: 'POST',
 			body: JSON.stringify({username, password}),
 			headers: {'Content-Type':'application/json'},
+			mode: "no-cors",
 		})
 		
 		if (response.status === 200){
