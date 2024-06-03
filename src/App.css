@@ -12,7 +12,7 @@ img{
 
 main{
   padding: 10px;
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
@@ -40,15 +40,28 @@ header nav{
 
 div.post{
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
   margin-bottom: 35px;
 }
+
+@media screen and (min-width: 600px){
+  div.post{
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
 
 div.post div.texts h2{
   margin: 0;
   font-size: 1.4rem;
   line-height: 1.7rem;
+  text-decoration: none;
+}
+
+div.post div.texts a{
+  text-decoration: none;
+  color: inherit;
 }
 
 div.post p.info{
@@ -94,3 +107,29 @@ button{
   padding: 7px 0;
 }
 
+div.post-page div.image {
+  max-height: 400px;
+  overflow: hidden;
+}
+
+div.post-page div.image img {
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+}
+
+div.post-page a{
+  color: #333;
+  text-decoration: underline;
+}
+
+.author-time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.author {
+  font-weight: bold;
+}

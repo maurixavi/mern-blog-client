@@ -2,6 +2,8 @@
 
 /client/node_modules
 
+/client/src/pages/other
+
 # dependencies
 /node_modules
 /.pnp
