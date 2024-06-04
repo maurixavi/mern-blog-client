@@ -6,6 +6,10 @@ body{
   color: #222;
 }
 
+a{
+  cursor: pointer;
+}
+
 img{
   max-width: 100%;
 }
@@ -98,6 +102,7 @@ input{
 }
 
 button{
+  cursor: pointer;
   width: 100%;
   display: block;
   background-color: #555;
@@ -132,4 +137,23 @@ div.post-page a{
 
 .author {
   font-weight: bold;
+}
+
+div.edit{
+  margin-bottom: 20px;
+}
+
+div.post-page a.edit-btn{
+  background-color: #555;
+  color: #fff;
+  padding: 7px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a svg{
+  height: 18px;
 }
