@@ -2,6 +2,7 @@ import { Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import Editor from "../Editor"
+import { API_BASE_URL } from '../config';
 
 export default function EditPost() {
 	const {id} = useParams()
@@ -12,8 +13,8 @@ export default function EditPost() {
 	const [redirect, setRedirect] = useState(false)
 	
 	useEffect(() => {
-		console.log(id)
-		fetch(`http://localhost:4000/post/${id}`)
+		console.log(id) 
+		fetch(`${API_BASE_URL}/post/${id}`)
 			.then(response => {
 				response.json().then(postInfo => {
 					setTitle(postInfo.title)
@@ -35,7 +36,7 @@ export default function EditPost() {
 			data.set('file', files?.[0])
 		}
 
-		const response = await fetch('http://localhost:4000/post', {
+		const response = await fetch(`${API_BASE_URL}/post`, {
 			method: 'PUT',
 			body: data,
 			mode: 'cors',
@@ -51,22 +52,24 @@ export default function EditPost() {
 	}
 
 	return (
-		<form onSubmit={updatePost}>
-			<input 
-				type="title" 
-				placeholder={'Title'}
-				value={title}
-				onChange={e => setTitle(e.target.value)}/>
-			<input 
-				type="summary" 
-				placeholder={'Summary'}
-				value={summary}
-				onChange={e => setSummary(e.target.value)}/>
-			<input 
-				type="file"	
-				onChange={e => setFiles(e.target.files)}/>
-			<Editor onChange={setContent} value={content} />
-			<button style={{marginTop:'5px'}}>Update Post</button>
-		</form>
+		<div className='edit-post-page'>
+			<form onSubmit={updatePost}>
+				<input 
+					type="title" 
+					placeholder={'Title'}
+					value={title}
+					onChange={e => setTitle(e.target.value)}/>
+				<input 
+					type="summary" 
+					placeholder={'Summary'}
+					value={summary}
+					onChange={e => setSummary(e.target.value)}/>
+				<input 
+					type="file"	
+					onChange={e => setFiles(e.target.files)}/>
+				<Editor onChange={setContent} value={content} />
+				<button style={{marginTop:'5px'}}>Update Post</button>
+			</form>
+		</div>
 	)
 }

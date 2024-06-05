@@ -2,14 +2,16 @@ import { useEffect, useState, useContext} from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import { UserContext } from '../UserContext'
+import { API_BASE_URL } from '../config';
 
 export default function PostPage() {
 	const [postInfo, setPostInfo] = useState(null)
 	const {userInfo} = useContext(UserContext)
 	const {id} = useParams()
+	
 	useEffect(() => {
-		console.log(id)
-		fetch(`http://localhost:4000/post/${id}`)
+		console.log(id) 
+		fetch(`${API_BASE_URL}/post/${id}`)
 			.then(response => {
 				response.json().then(postInfo => {
 					setPostInfo(postInfo)
@@ -36,9 +38,9 @@ export default function PostPage() {
 						Edit
 					</Link>
 				</div>
-			)}
+			)} 
 			<div className='image'>
-				<img src={`http://localhost:4000/${postInfo.cover}`}></img>
+				<img src={`${API_BASE_URL}/${postInfo.cover}`}></img>
 			</div>
 			<div dangerouslySetInnerHTML={{__html:postInfo.content}}></div>
 		</div>

@@ -1,5 +1,7 @@
 *{
   box-sizing: border-box;
+  margin: 0; 
+  padding: 0;
 }
 
 body{
@@ -15,46 +17,64 @@ img{
 }
 
 main{
-  padding: 10px;
-  max-width: 860px;
+  /*padding: 10px;*/
+  /*max-width: 860px;*/
+  max-width: 100%;
   margin: 0 auto;
 }
 
-header{
+header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
   align-items: center;
+  padding: 10px;
+  /*background-color: #f8f8f8; */
+  border-bottom: 1px solid #ddd; 
+  margin-bottom: 40px;
 }
 
 header a{
   text-decoration: none;
   color: inherit;
+  font-size: 0.95rem;
 }
 
 header a.logo{
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  /*padding: 0 35px;*/ 
+  
 }
 
 header nav{
   display: flex;
-  gap: 15px;
+  gap: 25px;
+  /*padding: 0 35px; */
 }
 
 div.post{
+  max-width: 960px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  margin-bottom: 35px;
+  margin: 0 auto 35px;
+  padding: 0 15px; 
 }
 
 @media screen and (min-width: 600px){
   div.post{
     grid-template-columns: 0.9fr 1.1fr;
   }
-}
 
+  header a.logo {
+    padding: 0 40px; 
+  }
+
+  header nav {
+    padding: 0 40px;
+  }
+}
 
 div.post div.texts h2{
   margin: 0;
@@ -91,6 +111,7 @@ form.login, form.register{
   margin: 0 auto;
 }
 
+
 input{
   display: block;
   margin-bottom: 5px;
@@ -110,6 +131,13 @@ button{
   color: #fff;
   border-radius: 5px;
   padding: 7px 0;
+}
+
+div.post-page  {
+  max-width: 860px;
+  margin: 0 auto 35px;
+  padding: 0 15px;
+  margin-bottom: 50px;
 }
 
 div.post-page div.image {
@@ -156,4 +184,18 @@ div.post-page a.edit-btn{
 
 a svg{
   height: 18px;
+}
+
+.create-post-page  {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 15px; 
+  margin-bottom: 50px;
+}
+
+.edit-post-page  {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 15px; 
+  margin-bottom: 50px;
 }

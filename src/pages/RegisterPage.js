@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { API_BASE_URL } from '../config';
 
 export default function RegisterPage() {
 	const [username, setUsername] = useState('')
@@ -6,7 +7,7 @@ export default function RegisterPage() {
 
 	async function register(e){
 		e.preventDefault();
-		const response = await fetch('http://localhost:4000/register', {
+		const response = await fetch(`${API_BASE_URL}/register`, {
 			method: 'POST',
 			mode: "cors",
 			body: JSON.stringify({username, password}),
