@@ -1,12 +1,13 @@
 import { format } from 'date-fns'
 import { Link } from 'react-router-dom'
+import { API_BASE_URL } from './config';
 
 export default function Post({_id, title, summary, cover, content, createdAt, author}) {
   return (
 		<div className="post">
 			<div className="image">
 				<Link to={`/post/${_id}`}>
-					<img src={'http://localhost:4000/' + cover} alt=""></img>
+					<img src={`${API_BASE_URL}/${cover}`} alt=""></img>
 				</Link>
 			</div>
 			<div className="texts">
