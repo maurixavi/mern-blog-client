@@ -40,7 +40,7 @@ export default function PostPage() {
 				</div>
 			)} 
 			<div className='image'>
-				<img src={`${API_BASE_URL}/${postInfo.cover}`}></img>
+				<img src={postInfo.cover}></img>
 			</div>
 			<div dangerouslySetInnerHTML={{__html:postInfo.content}}></div>
 		</div>

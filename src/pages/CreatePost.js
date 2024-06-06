@@ -29,13 +29,20 @@ export default function CreatePost() {
 	const [redirect, setRedirect] = useState(false)
 
 	async function createNewPost(e) {
+		e.preventDefault();
+
+		if (!files.length) {
+			alert('Please upload an image.');
+			return;
+		}
+
 		const data = new FormData()
 		data.set('title', title)
 		data.set('summary', summary)
 		data.set('content', content)
 		data.set('file', files[0])
 
-		e.preventDefault();
+		
 		const response = await fetch(`${API_BASE_URL}/post`, {
 			method: 'POST',
 			mode: 'cors',

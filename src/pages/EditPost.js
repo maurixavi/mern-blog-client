@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import Editor from "../Editor"
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../config'
 
 export default function EditPost() {
 	const {id} = useParams()
@@ -10,22 +10,31 @@ export default function EditPost() {
 	const [summary, setSummary] = useState('')
 	const [content, setContent] = useState('')
 	const [files, setFiles] = useState('')
+	const [existingImage, setExistingImage] = useState('')
+	const [fileSelected, setFileSelected] = useState(true)
 	const [redirect, setRedirect] = useState(false)
 	
 	useEffect(() => {
-		console.log(id) 
 		fetch(`${API_BASE_URL}/post/${id}`)
 			.then(response => {
 				response.json().then(postInfo => {
+					console.log(postInfo)
 					setTitle(postInfo.title)
 					setSummary(postInfo.summary)
 					setContent(postInfo.content)
+					setExistingImage(postInfo.cover)
 				})
 			})
-	}, [])
+	}, [id])
 
 	async function updatePost(e) {
-		e.preventDefault();
+		e.preventDefault()
+
+		if (!existingImage && !fileSelected) {
+			alert('Please upload an image.')
+			return
+	}
+
 		const data = new FormData()
 		data.set('title', title)
 		data.set('summary', summary)
@@ -66,7 +75,10 @@ export default function EditPost() {
 					onChange={e => setSummary(e.target.value)}/>
 				<input 
 					type="file"	
-					onChange={e => setFiles(e.target.files)}/>
+					onChange={e => {
+						setFiles(e.target.files)
+						setFileSelected(!!e.target.files.length)
+				}}/>
 				<Editor onChange={setContent} value={content} />
 				<button style={{marginTop:'5px'}}>Update Post</button>
 			</form>
