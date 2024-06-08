@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { API_BASE_URL } from '../config';
+import { toast } from "react-hot-toast"
+import { toastErrorStyles, toastSuccessStyles } from '../config';
 
 export default function RegisterPage() {
 	const [username, setUsername] = useState('')
@@ -15,9 +17,9 @@ export default function RegisterPage() {
 		})
 		
 		if (response.status === 200){
-			alert('registration successful')
+			toast.success('User logged in successfully.', toastSuccessStyles);
 		} else {
-			alert('registration failed')
+			toast.error('Registration failed. Please try again.', toastErrorStyles)
 		}
 	}
 

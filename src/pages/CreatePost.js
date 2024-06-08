@@ -1,25 +1,9 @@
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
 import { Navigate } from "react-router-dom"
 import { useState } from "react"
+import Editor from "../Editor"
 import { API_BASE_URL } from '../config';
-
-const modules = {
-	toolbar: [
-		[{ 'header': [1, 2, false] }],
-		['bold', 'italic', 'underline','strike', 'blockquote'],
-		[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-		['link', 'image'],
-		['clean']
-	],
-}
-
-const formats = [
-	'header',
-	'bold', 'italic', 'underline', 'strike', 'blockquote',
-	'list', 'bullet', 'indent',
-	'link', 'image'
-]
+import { toast } from "react-hot-toast"
+import { toastErrorStyles, toastSuccessStyles } from '../config';
 
 export default function CreatePost() {
 	const [title, setTitle] = useState('')
@@ -40,24 +24,25 @@ export default function CreatePost() {
 		data.set('title', title)
 		data.set('summary', summary)
 		data.set('content', content)
-		data.set('file', files[0])
+		if (files?.[0]) {
+			data.set('file', files?.[0])
+		}
 
 		const response = await fetch(`${API_BASE_URL}/post`, {
 			method: 'POST',
 			mode: 'cors',
-			body: data, // Asegúrate de convertir tu objeto a JSON antes de enviarlo
+			body: data, 
 			credentials: 'include',
 		})
-		/*const response = await fetch(`${API_BASE_URL}/post`, {
-			method: 'POST',
-			mode: 'cors',
-			body: data,
-			headers: {'Content-Type':'application/json'},
-			credentials: 'include',
-		})*/
-		// console.log(await response.json())
-		if (response.ok) {
-			setRedirect(true)
+
+		if (response.ok){
+			toast.success('Post created successfully!', toastSuccessStyles)
+			response.json().then(userInfo => {
+				setRedirect(true)
+			})
+			
+		} else {
+			toast.error('Error: Unable to create post.', toastErrorStyles)
 		}
 	}
 
@@ -81,11 +66,7 @@ export default function CreatePost() {
 				<input 
 					type="file"	
 					onChange={e => setFiles(e.target.files)}/>
-				<ReactQuill 
-					value={content} 
-					onChange={newValue => setContent(newValue)}
-					modules={modules} 
-					formats={formats} />
+				<Editor onChange={setContent} value={content} />
 				<button style={{marginTop:'5px'}}>Create Post</button>
 			</form>
 		</div>

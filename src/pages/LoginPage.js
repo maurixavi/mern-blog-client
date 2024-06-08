@@ -2,6 +2,8 @@ import { useState, useContext } from "react"
 import { Navigate } from "react-router-dom"
 import { UserContext } from '../UserContext'
 import { API_BASE_URL } from '../config';
+import { toast } from "react-hot-toast"
+import { toastErrorStyles, toastSuccessStyles } from '../config';
 
 export default function LoginPage() {
 	const [username, setUsername] = useState('')
@@ -16,18 +18,18 @@ export default function LoginPage() {
 			mode: 'cors',
 			body: JSON.stringify({username, password}),
 			headers: {'Content-Type':'application/json'},
-			credentials: 'include', //Always send user credentials (cookies, basic http auth, etc..), even for cross-origin calls.
+			credentials: 'include', 
 		})
 		
 		if (response.ok){
-			alert('login successful')
+			toast.success('User logged in successfully.', toastSuccessStyles)
 			response.json().then(userInfo => {
 				setUserInfo(userInfo)
 				setRedirect(true)
 			})
 			
 		} else {
-			alert('login failed')
+			toast.error('Login failed. Check your credentials.', toastErrorStyles)
 		}
 
 	}

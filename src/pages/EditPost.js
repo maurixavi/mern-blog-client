@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import Editor from "../Editor"
 import { API_BASE_URL } from '../config'
+import { toast } from "react-hot-toast"
+import { toastErrorStyles, toastSuccessStyles } from '../config';
 
 export default function EditPost() {
 	const {id} = useParams()
@@ -51,8 +53,15 @@ export default function EditPost() {
 			mode: 'cors',
 			credentials: 'include',
 		})
-		if (response.ok) {
-			setRedirect(true)
+		
+		if (response.ok){
+			toast.success('Post updated successfully!', toastSuccessStyles)
+			response.json().then(userInfo => {
+				setRedirect(true)
+			})
+			
+		} else {
+			toast.error('Error: Unable to update post.', toastErrorStyles)
 		}
 	}
 
