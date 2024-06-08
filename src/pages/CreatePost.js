@@ -42,13 +42,19 @@ export default function CreatePost() {
 		data.set('content', content)
 		data.set('file', files[0])
 
-		
 		const response = await fetch(`${API_BASE_URL}/post`, {
 			method: 'POST',
 			mode: 'cors',
-			body: data,
+			body: data, // Asegúrate de convertir tu objeto a JSON antes de enviarlo
 			credentials: 'include',
 		})
+		/*const response = await fetch(`${API_BASE_URL}/post`, {
+			method: 'POST',
+			mode: 'cors',
+			body: data,
+			headers: {'Content-Type':'application/json'},
+			credentials: 'include',
+		})*/
 		// console.log(await response.json())
 		if (response.ok) {
 			setRedirect(true)
