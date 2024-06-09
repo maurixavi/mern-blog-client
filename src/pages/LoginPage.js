@@ -1,9 +1,9 @@
 import { useState, useContext } from "react"
-import { Navigate } from "react-router-dom"
+import { Navigate, Link } from "react-router-dom"
 import { UserContext } from '../UserContext'
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../config'
 import { toast } from "react-hot-toast"
-import { toastErrorStyles, toastSuccessStyles } from '../config';
+import { toastErrorStyles, toastSuccessStyles } from '../config'
 
 export default function LoginPage() {
 	const [username, setUsername] = useState('')
@@ -40,7 +40,7 @@ export default function LoginPage() {
 
 	return (
 		<form className="login" onSubmit={login}>
-			<h1>Login</h1>
+			<h2>Login</h2>
 			<input 
 				type="text" 
 				placeholder="Username"
@@ -52,6 +52,9 @@ export default function LoginPage() {
 				value={password}
 				onChange={e => setPassword(e.target.value)} />
 			<button>Login</button>
+			<div className="redirect-message">
+    		<p>Don't have an account? <Link to="/register">Register here</Link></p>
+  	</div>
 		</form>
 	)
 }

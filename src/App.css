@@ -53,6 +53,51 @@ header nav{
   /*padding: 0 35px; */
 }
 
+nav .register-btn{
+  font-size: 0.95em;
+  background-color: #888 ;
+  color: #fff;
+  border: 1px solid #888;
+  padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+nav .register-btn:hover{
+  background-color: #777 ;
+}
+
+nav .login-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+nav .login-btn:hover {
+  color: #555;
+}
+
+.redirect-message {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.redirect-message p {
+  font-size: 14px;
+  color: #555;
+}
+
+.redirect-message a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.redirect-message a:hover {
+  text-decoration: underline;
+}
+
 div.post{
   max-width: 960px;
   display: grid;
@@ -113,24 +158,38 @@ form.login, form.register{
 
 
 input{
+  font-size: 0.90em;
   display: block;
   margin-bottom: 5px;
   width: 100%;
-  padding: 5px 7px;
+  padding: 8px 9px;
   border: 2px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
 }
 
 button{
+  font-size: 0.95em;
   cursor: pointer;
   width: 100%;
   display: block;
-  background-color: #555;
+  background-color: #444;
   border: 0;
   color: #fff;
-  border-radius: 5px;
-  padding: 7px 0;
+  border-radius: 8px;
+  padding: 9px 0;
+  margin-top: 10px;
+}
+
+button:hover{
+  background-color: #333;
+}
+
+
+
+form h2{
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 div.post-page  {
@@ -143,6 +202,7 @@ div.post-page  {
 div.post-page div.image {
   max-height: 400px;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 div.post-page div.image img {
@@ -161,25 +221,64 @@ div.post-page a{
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .author {
   font-weight: bold;
 }
 
-div.edit{
+div.edit-delete{
   margin-bottom: 20px;
 }
 
 div.post-page a.edit-btn{
-  background-color: #555;
-  color: #fff;
-  padding: 7px 14px;
+  font-size: 0.95em;
+  background-color: #fff;
+  color: #888;
+  border: 1px solid #888;
+  padding: 5px 12px;
   display: inline-flex;
   align-items: center;
   gap: 4px;
   text-decoration: none;
   border-radius: 5px;
+  margin-right: 5px;
+}
+
+div.post-page a.edit-btn:hover{
+  font-size: 0.95em;
+  background-color: #888 ;
+  color: #fff;
+  border: 1px solid #888;
+  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+
+div.post-page a.delete-btn{
+  font-size: 0.95em;
+  background-color: #fff;
+  color: #f94144;
+  border: 1px solid #f94144;
+  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+div.post-page a.delete-btn:hover{
+  background-color: #f94144;
+  color: #fff ;
+  border: 1px solid #f94144;
 }
 
 a svg{

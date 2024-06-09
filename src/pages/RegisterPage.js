@@ -2,10 +2,12 @@ import { useState } from "react"
 import { API_BASE_URL } from '../config';
 import { toast } from "react-hot-toast"
 import { toastErrorStyles, toastSuccessStyles } from '../config';
+import { Navigate, Link } from "react-router-dom"
 
 export default function RegisterPage() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const [redirect, setRedirect] = useState(false)
 
 	async function register(e){
 		e.preventDefault();
@@ -17,15 +19,20 @@ export default function RegisterPage() {
 		})
 		
 		if (response.status === 200){
-			toast.success('User logged in successfully.', toastSuccessStyles);
+			toast.success('User registered successfully.', toastSuccessStyles);
+			setRedirect(true)
 		} else {
 			toast.error('Registration failed. Please try again.', toastErrorStyles)
 		}
 	}
 
+	if (redirect) {
+		return <Navigate to={'/login'} />
+	}
+
 	return (
 		<form className="register" onSubmit={register}>
-			<h1>Register</h1>
+			<h2>Create Account</h2>
 			<input 
 				type="text" 
 				placeholder="Username"
@@ -36,7 +43,10 @@ export default function RegisterPage() {
 				placeholder="Password" 
 				value={password}
 				onChange={e => setPassword(e.target.value)} />
-			<button>Register </button>
+			<button>Register</button>
+			<div className="redirect-message">
+				<p>Already have an account? <Link to="/login">Login here</Link></p>
+			</div>
 		</form>
 	)
 }
