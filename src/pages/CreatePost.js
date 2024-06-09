@@ -25,7 +25,6 @@ export default function CreatePost() {
 		data.set('title', title)
 		data.set('summary', summary)
 		data.set('content', content)
-		data.set('id', id)
 		if (files?.[0]) {
 			data.set('file', files?.[0])
 		}
@@ -39,6 +38,7 @@ export default function CreatePost() {
 
 		if (response.ok){
 			toast.success('Post created successfully!', toastSuccessStyles)
+			console.log("ID: ", id)
 			response.json().then(userInfo => {
 				setRedirect(true)
 			})
@@ -49,7 +49,7 @@ export default function CreatePost() {
 	}
 
 	if (redirect) {
-		return <Navigate to={'/post/'+id} />
+		return <Navigate to={'/'} />
 	}
 
 	return (
