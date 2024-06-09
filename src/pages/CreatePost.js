@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
 import { useState } from "react"
 import Editor from "../Editor"
 import { API_BASE_URL } from '../config';
@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast"
 import { toastErrorStyles, toastSuccessStyles } from '../config';
 
 export default function CreatePost() {
+	const {id} = useParams()
 	const [title, setTitle] = useState('')
 	const [summary, setSummary] = useState('')
 	const [content, setContent] = useState('')
@@ -24,6 +25,7 @@ export default function CreatePost() {
 		data.set('title', title)
 		data.set('summary', summary)
 		data.set('content', content)
+		data.set('id', id)
 		if (files?.[0]) {
 			data.set('file', files?.[0])
 		}
@@ -47,7 +49,7 @@ export default function CreatePost() {
 	}
 
 	if (redirect) {
-		return <Navigate to={'/'} />
+		return <Navigate to={'/post/'+id} />
 	}
 
 	return (
