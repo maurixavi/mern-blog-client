@@ -8,7 +8,7 @@ export default function IndexPage() {
   useEffect(() => { 
     fetch(`${API_BASE_URL}/post`).then(response => {
       response.json().then(posts => {
-        console.log(posts)
+        //console.log(posts)
 				setPosts(posts)
       })
     })

@@ -55,7 +55,7 @@ export default function EditPost() {
 		})
 		
 		if (response.ok){
-			toast.success('Post updated successfully!', toastSuccessStyles)
+			toast.success('Post successfully updated.', toastSuccessStyles)
 			response.json().then(userInfo => {
 				setRedirect(true)
 			})

@@ -37,7 +37,7 @@ export default function CreatePost() {
 		})
 
 		if (response.ok){
-			toast.success('Post created successfully!', toastSuccessStyles)
+			toast.success('Post successfully created.', toastSuccessStyles)
 			console.log("ID: ", id)
 			response.json().then(userInfo => {
 				setRedirect(true)

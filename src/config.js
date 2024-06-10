@@ -1,5 +1,5 @@
-export const API_BASE_URL = 'https://mern-blog-api-eight.vercel.app';
-export const API_BASE_URL_DEV = 'http://localhost:4000';
+export const API_BASE_URL_PROD = 'https://mern-blog-api-eight.vercel.app';
+export const API_BASE_URL = 'http://localhost:4000';
 
 export const toastErrorStyles = {
 	position: "bottom-right",

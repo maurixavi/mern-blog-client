@@ -19,7 +19,7 @@ export default function RegisterPage() {
 		})
 		
 		if (response.status === 200){
-			toast.success('User registered successfully.', toastSuccessStyles);
+			toast.success('User successfully registered.', toastSuccessStyles);
 			setRedirect(true)
 		} else {
 			toast.error('Registration failed. Please try again.', toastErrorStyles)
