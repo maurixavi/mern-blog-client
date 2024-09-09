@@ -42,7 +42,7 @@ header a{
 
 header a.logo{
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   /*padding: 0 35px;*/ 
   
 }
@@ -107,9 +107,17 @@ div.post{
   padding: 0 15px; 
 }
 
+div.post .image img {
+  width: 95%;
+  height: 220px;  
+  object-fit: cover;  
+  min-height: 150px;  
+  max-height: 240px; 
+}
+
 @media screen and (min-width: 600px){
   div.post{
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: 0.8fr 1.2fr;
   }
 
   header a.logo {
@@ -123,7 +131,7 @@ div.post{
 
 div.post div.texts h2{
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1.7rem;
   text-decoration: none;
 }
@@ -147,8 +155,10 @@ div.post p.info a.author{
 }
 
 div.post p.summary{
+  font-size: 0.92rem;
   margin: 10px 0;
-  line-height: 1.3rem;
+  line-height: 1.2rem;
+  letter-spacing: -0.1px;
 }
 
 form.login, form.register{
