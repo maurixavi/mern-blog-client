@@ -1,6 +1,6 @@
 # MERN Blog Client
 
-This is the frontend application for the MERN Blog. It is a React-based client that interacts with the backend API to provide a seamless user experience for browsing, creating, and editing blog posts.
+This is the frontend application for the MERN Blog. It is a React-based client that interacts with the [backend API](https://github.com/maurixavi/mern-blog-backend) to provide a seamless user experience for browsing, creating, and editing blog posts.
 
 Check out the application [here](https://mern-blog-client-torr.onrender.com).
 
